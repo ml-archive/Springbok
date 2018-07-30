@@ -36,4 +36,5 @@ Run `carthage update` to build the framework and drag the built `Springbok.frame
 
 ## 💻 Developers
 
-- [Maxime Maheo]((https://github.com/mmaheo))
+- [Maxime Maheo](https://github.com/mmaheo)
+
