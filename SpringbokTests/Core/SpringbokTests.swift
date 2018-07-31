@@ -16,9 +16,12 @@ class SpringbokTests: XCTestCase {
         
         XCTAssertNil(request.error)
         XCTAssertEqual(request.url?.absoluteString, "http://google.fr")
+        XCTAssertEqual(request.request?.url?.absoluteString, "http://google.fr")
         XCTAssertEqual(request.method, HTTPMethod.get)
+        XCTAssertEqual(request.request?.httpMethod, HTTPMethod.get.rawValue)
         XCTAssertNil(request.parameters)
         XCTAssertNil(request.headers)
+        XCTAssertEqual(request.request?.allHTTPHeaderFields?.count, 0)
     }
     
     func testRequestWithWrongURL() {
@@ -29,22 +32,24 @@ class SpringbokTests: XCTestCase {
         XCTAssertNil(request.method)
         XCTAssertNil(request.parameters)
         XCTAssertNil(request.headers)
+        XCTAssertNil(request.request)
     }
     
     func testRequestWithAnotherHTTPMethod() {
         let request = Springbok.request("http://google.fr", method: .post)
         
         XCTAssertEqual(request.method, HTTPMethod.post)
+        XCTAssertEqual(request.request?.httpMethod, HTTPMethod.post.rawValue)
     }
     
     func testRequestWithParameters() {
         let request = Springbok.request("http://google.fr", method: .post, parameters: ["foo": "bar", "id": 1])
         
         // swiftlint:disable:next force_cast
-        XCTAssert(request.parameters!["foo"] as! String == "bar")
+        XCTAssertTrue(request.parameters!["foo"] as! String == "bar")
         
         // swiftlint:disable:next force_cast
-        XCTAssert(request.parameters!["id"] as! Int == 1)
+        XCTAssertTrue(request.parameters!["id"] as! Int == 1)
     }
     
     func testRequestWithHeaders() {
@@ -52,21 +57,26 @@ class SpringbokTests: XCTestCase {
             "http://google.fr",
             method: .post,
             parameters: nil,
-            headers: ["Content-type": "application/json"]
+            headers: ["Content-Type": "application/json"]
         )
         
-        XCTAssert(request.headers!["Content-type"] == "application/json")
+        XCTAssert(request.headers!["Content-Type"] == "application/json")
+        XCTAssertEqual(request.request?.allHTTPHeaderFields!.count, 1)
+        XCTAssert(request.request?.allHTTPHeaderFields?["Content-Type"] == "application/json")
     }
     
     func testUrlEncoding() {
         let getRequest = Springbok.request("http://google.fr", method: .get, parameters: ["foo": "bar", "id": 1])
         XCTAssertEqual(getRequest.url?.absoluteString, "http://google.fr?id=1&foo=bar")
+        XCTAssertEqual(getRequest.request?.url?.absoluteString, "http://google.fr?id=1&foo=bar")
         XCTAssertNil(getRequest.body)
+        XCTAssertNil(getRequest.request?.httpBody)
         
         let postRequest = Springbok.request("http://google.fr", method: .post, parameters: ["foo": "bar", "id": 1])
         XCTAssertEqual(postRequest.url?.absoluteString, "http://google.fr")
-        XCTAssertNotNil(postRequest.body)
+        XCTAssertEqual(postRequest.request?.url?.absoluteString, "http://google.fr")
         XCTAssertEqual(postRequest.body, "{\"foo\":\"bar\",\"id\":1}".data(using: .utf8))
+        XCTAssertEqual(postRequest.request?.httpBody, "{\"foo\":\"bar\",\"id\":1}".data(using: .utf8))
     }
     
     func testGetResponse() {
@@ -81,6 +91,17 @@ class SpringbokTests: XCTestCase {
                 case .failure:
                     XCTFail("User must be fetched")
                 }
+        }
+        waitForExpectations(timeout: 5.0)
+    }
+    
+    func testRequestThreads() {
+        let expect = expectation(description: "Completion must be in the main thread")
+        Springbok
+            .request("https://jsonplaceholder.typicode.com/users")
+            .responseCodable { (_: Result<[User]>) in
+                XCTAssertTrue(Thread.isMainThread)
+                expect.fulfill()
         }
         waitForExpectations(timeout: 5.0)
     }

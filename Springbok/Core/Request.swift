@@ -28,7 +28,7 @@ public class Request {
         request = nil
         
         if parameters != nil {
-            encodeRequestParameters(with: method, parameters: parameters!)
+            encodeRequestParameters()
         }
         
         createRequest()
@@ -50,23 +50,34 @@ public class Request {
         request?.httpMethod = method?.rawValue
         request?.allHTTPHeaderFields = headers
         
-        if method != .get {
+        if isRequestNeedBody() {
             request?.httpBody = body
         }
     }
     
-    private func encodeRequestParameters(with method: HTTPMethod, parameters: Parameters) {
+    private func isRequestNeedBody() -> Bool {
+        return method != .get
+    }
+    
+    private func isRequestNeedParametersURL() -> Bool {
+        return method == .get
+    }
+    
+    private func encodeRequestParameters() {
         guard let url = url else { return }
         
-        if method == .get {
-            self.url = URL(string: "\(url.absoluteString)?\(generateQuery(parameters: parameters))")!
+        if isRequestNeedParametersURL() {
+            self.url = URL(string: "\(url.absoluteString)?\(generateQuery())")!
         } else {
-            body = generateBody(parameters: parameters)
+            body = generateBody()
         }
     }
     
-    private func generateQuery(parameters: Parameters) -> String {
+    private func generateQuery() -> String {
+        guard let parameters = parameters else { return "" }
+        
         var queryString = ""
+        
         parameters
             .sorted {
                 return $0.0 > $1.0
@@ -79,7 +90,9 @@ public class Request {
         return queryString
     }
     
-    private func generateBody(parameters: Parameters) -> Data? {
+    private func generateBody() -> Data? {
+        guard let parameters = parameters else { return nil }
+        
         if JSONSerialization.isValidJSONObject(parameters) {
             do {
                 return try JSONSerialization.data(
