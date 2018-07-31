@@ -28,8 +28,10 @@ public class Request {
         request = nil
         
         if parameters != nil {
-            encodeRequest(with: method, parameters: parameters!)
+            encodeRequestParameters(with: method, parameters: parameters!)
         }
+        
+        createRequest()
     }
     
     init(error: Error) {
@@ -43,7 +45,17 @@ public class Request {
     }
     
     // MARK: - Methods -
-    private func encodeRequest(with method: HTTPMethod, parameters: Parameters) {
+    private func createRequest() {
+        request = URLRequest(url: url!)
+        request?.httpMethod = method?.rawValue
+        request?.allHTTPHeaderFields = headers
+        
+        if method != .get {
+            request?.httpBody = body
+        }
+    }
+    
+    private func encodeRequestParameters(with method: HTTPMethod, parameters: Parameters) {
         guard let url = url else { return }
         
         if method == .get {
