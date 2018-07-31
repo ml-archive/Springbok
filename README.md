@@ -31,7 +31,7 @@ struct User: Codable {
 import Springbok
 
     Springbok
-        .request("<your url>", )
+        .request("<your_url>")
         .responseCodable { (result: Result<User>) in
             switch result {
             case .success(let user):
@@ -49,7 +49,7 @@ import Springbok
 
     Springbok
         .request(
-            "<your url>", 
+            "<your_url>", 
             method: .post, // .get, .post, .patch, .put, .delete
             parameters: ["id": 1], // [String: Any]
             headers: ["Content-Type": "application/json"] // [String: String]
@@ -57,6 +57,40 @@ import Springbok
         .responseCodable { (result: Result<User>) in
             switch result {
             case .success(let playlists):
+                // request successful, your model is decoded !
+            case .failure(let error):
+                // request failed ...
+            }
+        }
+```
+
+### Unwrap your data
+
+If your server returns data like this :
+
+```json
+{
+   "<root_object_name>": [
+      {
+         "id": 1,
+         "name": "John Doe"
+      },
+      ...
+   ]
+}
+```
+
+You need to unwrap the response in order to decode it.
+
+```swift
+import Springbok
+
+Springbok
+        .request("<your_url>")
+        .unwrap("root_object_name") // the name of your root object
+        .responseCodable { (result: Result<User>) in
+            switch result {
+            case .success(let user):
                 // request successful, your model is decoded !
             case .failure(let error):
                 // request failed ...
