@@ -7,9 +7,62 @@
 
 ## 📖 Project description
 
-Springbok is a light and fast HTTP Networking in Swift.
+Springbok is a light and fast HTTP Networking in Swift working with Codable.
 
 ## 📂 Features
+
+- [x] Chainable Request / Response Methods
+- [x] Request handle is background and Response in the main thread
+- [x] Works with Codable !
+
+### Define your Model
+
+```swift
+struct User: Codable {
+    let id: Int
+    let name: String
+    ...
+}
+```
+
+### Making simple request
+
+```swift
+import Springbok
+
+    Springbok
+        .request("<your url>", )
+        .responseCodable { (result: Result<User>) in
+            switch result {
+            case .success(let user):
+                // request successful, your model is decoded !
+            case .failure(let error):
+                // request failed ...
+            }
+        }
+```
+
+### Making elaborated request
+
+```swift
+import Springbok
+
+    Springbok
+        .request(
+            "<your url>", 
+            method: .post, // .get, .post, .patch, .put, .delete
+            parameters: ["id": 1], // [String: Any]
+            headers: ["Content-Type": "application/json"] // [String: String]
+        )
+        .responseCodable { (result: Result<User>) in
+            switch result {
+            case .success(let playlists):
+                // request successful, your model is decoded !
+            case .failure(let error):
+                // request failed ...
+            }
+        }
+```
 
 ## 🔧 Installation
 
