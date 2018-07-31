@@ -15,6 +15,29 @@ Springbok is a light and fast HTTP Networking in Swift working with Codable.
 - [x] Request handle is background and Response in the main thread
 - [x] Works with Codable !
 
+## 🔧 Installation
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](https://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate Springbok into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "nodes-ios/Springbok"
+```
+
+Run `carthage update` to build the framework and drag the built `Springbok.framework` into your Xcode project.
+
+## 📝 Documentation
+
 ### Define your Model
 
 ```swift
@@ -97,29 +120,6 @@ Springbok
             }
         }
 ```
-
-## 🔧 Installation
-
-### Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
-You can install Carthage with [Homebrew](https://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate Springbok into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "nodes-ios/Springbok"
-```
-
-Run `carthage update` to build the framework and drag the built `Springbok.framework` into your Xcode project.
-
-## 📝 Documentation
 
 ## 💻 Developers
 

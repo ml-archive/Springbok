@@ -124,7 +124,6 @@ class SpringbokTests: XCTestCase {
                 XCTFail("Request should be unwrap")
             }
         }
-        
         waitForExpectations(timeout: 5.0)
     }
 }
