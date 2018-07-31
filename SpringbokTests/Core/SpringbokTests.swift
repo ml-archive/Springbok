@@ -22,6 +22,7 @@ class SpringbokTests: XCTestCase {
         XCTAssertNil(request.parameters)
         XCTAssertNil(request.headers)
         XCTAssertEqual(request.request?.allHTTPHeaderFields?.count, 0)
+        XCTAssertNil(request.unwrapper)
     }
     
     func testRequestWithWrongURL() {
@@ -33,6 +34,7 @@ class SpringbokTests: XCTestCase {
         XCTAssertNil(request.parameters)
         XCTAssertNil(request.headers)
         XCTAssertNil(request.request)
+        XCTAssertNil(request.unwrapper)
     }
     
     func testRequestWithAnotherHTTPMethod() {
@@ -103,6 +105,26 @@ class SpringbokTests: XCTestCase {
                 XCTAssertTrue(Thread.isMainThread)
                 expect.fulfill()
         }
+        waitForExpectations(timeout: 5.0)
+    }
+    
+    func testUnwrap() {
+        let request = Springbok
+            .request("https://api.deezer.com/user/5/playlists")
+            .unwrap("data")
+        XCTAssertNotNil(request.unwrapper)
+        
+        let expect = expectation(description: "Request should be unwrapped")
+        request.responseCodable { (result: Result<[Playlist]>) in
+            switch result {
+            case .success(let playlists):
+                XCTAssertEqual(playlists.count, 25)
+                expect.fulfill()
+            case .failure:
+                XCTFail("Request should be unwrap")
+            }
+        }
+        
         waitForExpectations(timeout: 5.0)
     }
 }

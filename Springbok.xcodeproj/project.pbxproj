@@ -21,6 +21,7 @@
 		20B2E080210F45800035C8F2 /* SpringbokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E07F210F45800035C8F2 /* SpringbokTests.swift */; };
 		20B2E087210F544E0035C8F2 /* Request+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E086210F544E0035C8F2 /* Request+Response.swift */; };
 		20B2E08A210F58850035C8F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E089210F58850035C8F2 /* User.swift */; };
+		20E4DDFB2110805D00A748B8 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E4DDFA2110805D00A748B8 /* Playlist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		20B2E07F210F45800035C8F2 /* SpringbokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringbokTests.swift; sourceTree = "<group>"; };
 		20B2E086210F544E0035C8F2 /* Request+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Response.swift"; sourceTree = "<group>"; };
 		20B2E089210F58850035C8F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20E4DDFA2110805D00A748B8 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				20B2E089210F58850035C8F2 /* User.swift */,
+				20E4DDFA2110805D00A748B8 /* Playlist.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				20B2E073210F3E930035C8F2 /* HTTPMethodTests.swift in Sources */,
 				20B2E07A210F40DA0035C8F2 /* URLConvertibleTests.swift in Sources */,
 				20B2E080210F45800035C8F2 /* SpringbokTests.swift in Sources */,
+				20E4DDFB2110805D00A748B8 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

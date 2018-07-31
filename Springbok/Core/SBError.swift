@@ -10,4 +10,5 @@ public enum SBError: Error {
     case invalidURL(url: String)
     case invalidRequest
     case emptyData
+    case failedToUnwrap
 }

@@ -16,6 +16,7 @@ public class Request {
     public let headers: HTTPHeaders?
     private(set) var body: Data?
     private(set) var request: URLRequest?
+    private(set) var unwrapper: String?
     
     // MARK: - Lifecycle -
     init(url: URL, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?) {
@@ -103,6 +104,13 @@ public class Request {
                 return nil
             }
         }
+        
         return nil
+    }
+    
+    public func unwrap(_ unwrapper: String) -> Request {
+        self.unwrapper = unwrapper
+        
+        return self
     }
 }
