@@ -7,9 +7,13 @@
 
 ## 📖 Project description
 
-Springbok is a light and fast HTTP Networking in Swift.
+Springbok is a light and fast HTTP Networking in Swift working with Codable.
 
 ## 📂 Features
+
+- [x] Chainable Request / Response Methods
+- [x] Request handle is background and Response in the main thread
+- [x] Works with Codable !
 
 ## 🔧 Installation
 
@@ -34,6 +38,90 @@ Run `carthage update` to build the framework and drag the built `Springbok.frame
 
 ## 📝 Documentation
 
+### Define your Model
+
+```swift
+struct User: Codable {
+    let id: Int
+    let name: String
+    ...
+}
+```
+
+### Making simple request
+
+```swift
+import Springbok
+
+    Springbok
+        .request("<your_url>")
+        .responseCodable { (result: Result<User>) in
+            switch result {
+            case .success(let user):
+                // request successful, your model is decoded !
+            case .failure(let error):
+                // request failed ...
+            }
+        }
+```
+
+### Making elaborated request
+
+```swift
+import Springbok
+
+    Springbok
+        .request(
+            "<your_url>", 
+            method: .post, // .get, .post, .patch, .put, .delete
+            parameters: ["id": 1], // [String: Any]
+            headers: ["Content-Type": "application/json"] // [String: String]
+        )
+        .responseCodable { (result: Result<User>) in
+            switch result {
+            case .success(let playlists):
+                // request successful, your model is decoded !
+            case .failure(let error):
+                // request failed ...
+            }
+        }
+```
+
+### Unwrap your data
+
+If your server returns data like this :
+
+```json
+{
+   "<root_object_name>": [
+      {
+         "id": 1,
+         "name": "John Doe"
+      },
+      ...
+   ]
+}
+```
+
+You need to unwrap the response in order to decode it.
+
+```swift
+import Springbok
+
+Springbok
+        .request("<your_url>")
+        .unwrap("root_object_name") // the name of your root object
+        .responseCodable { (result: Result<User>) in
+            switch result {
+            case .success(let user):
+                // request successful, your model is decoded !
+            case .failure(let error):
+                // request failed ...
+            }
+        }
+```
+
 ## 💻 Developers
 
-- [Maxime Maheo]((https://github.com/mmaheo))
+- [Maxime Maheo](https://github.com/mmaheo)
+
