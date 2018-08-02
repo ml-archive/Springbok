@@ -14,6 +14,8 @@ Springbok is a light and fast HTTP Networking in Swift working with Codable.
 - [x] Chainable Request / Response Methods
 - [x] Request handle is background and Response in the main thread
 - [x] Works with Codable !
+- [x] UIImageView extension to set image
+- [x] UIImage set in cache (only memory for now)
 
 ## 🔧 Installation
 
@@ -119,6 +121,27 @@ Springbok
                 // request failed ...
             }
         }
+```
+
+### Download images
+
+You can download images and set into imageView like :
+
+```swift
+import Springbok
+
+// without option (by default fading animation is true, duration is 0.3 and placeholder image is nil)
+imageView.setImage(url: "<your_url>")
+
+// With options
+imageView.setImage(url: "", fading: true, duration: 0.5, placeholderImage: nil)
+```
+
+You can also cancel download image task by doing :
+```swift
+import Springbok
+
+imageView.cancelDownloadTask()
 ```
 
 ## 💻 Developers

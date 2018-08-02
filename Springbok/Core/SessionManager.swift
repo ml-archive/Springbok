@@ -5,8 +5,9 @@
 //  Created by Maxime Maheo on 30/07/2018.
 //  Copyright © 2018 Nodes. All rights reserved.
 //
+import UIKit
 
-public class SessionManager {
+class SessionManager {
     
     // MARK: - Properties -
     public static let `default`: SessionManager = {
@@ -16,10 +17,14 @@ public class SessionManager {
     }()
     
     public let session: URLSession
+    public var downloadImageTasks: [String: URLSessionDataTask]
+    public var imageCache: NSCache<NSString, UIImage>
     
     // MARK: - Lifecycle -
     init(configuration: URLSessionConfiguration = URLSessionConfiguration.default) {
         session = URLSession(configuration: configuration)
+        downloadImageTasks = [:]
+        imageCache = NSCache()
     }
     
     // MARK: - Methods -
