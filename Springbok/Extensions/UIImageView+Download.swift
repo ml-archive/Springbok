@@ -21,7 +21,7 @@ extension UIImageView {
         if let image = getImageFromCache(url: url) {
             setImage(image: image, url: url, fading: false)
         } else if let url = URL(string: url) {
-            SessionManager.default.downloadImage(from: url) { (image) in
+            ImageManager.shared.downloadImage(from: url) { (image) in
                 self.setImage(image: image, url: url.absoluteString, fading: fading, duration: duration)
             }
         }
@@ -29,7 +29,7 @@ extension UIImageView {
     
     public func cancelDownloadTask() {
         if let urlString = accessibilityIdentifier, let url = URL(string: urlString) {
-            SessionManager.default.downloadImageTasks[url.absoluteString]?.cancel()
+            ImageManager.shared.cancelTask(url: url.absoluteString)
         }
     }
         
@@ -57,16 +57,11 @@ extension UIImageView {
     }
     
     private func getImageFromCache(url: String) -> UIImage? {
-        if let image = SessionManager.default.imageCache.object(forKey: url as NSString) {
-            print("from cache")
-            return image
-        }
-        
-        return nil
+        return ImageManager.shared.getImageFromCache(url: url)
     }
     
     private func setImageIntoCache(url: String, image: UIImage) {
-        SessionManager.default.imageCache.setObject(image, forKey: url as NSString)
+        ImageManager.shared.setImageToCache(image: image, url: url)
     }
     
     private func animate(image: UIImage?, duration: TimeInterval) {

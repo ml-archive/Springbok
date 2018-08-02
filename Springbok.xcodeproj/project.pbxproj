@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2046C1582112EB3300D5E265 /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C1572112EB3300D5E265 /* UIImageView+Download.swift */; };
-		2046C15A2112EFDC00D5E265 /* SessionManager+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C1592112EFDC00D5E265 /* SessionManager+DownloadImage.swift */; };
+		2046C161211324CB00D5E265 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C160211324CB00D5E265 /* ImageManager.swift */; };
+		2046C1632113266300D5E265 /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C1622113266300D5E265 /* ImageManagerTests.swift */; };
 		20B2E048210F391A0035C8F2 /* Springbok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B2E03E210F391A0035C8F2 /* Springbok.framework */; };
 		20B2E04F210F391A0035C8F2 /* Springbok.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B2E041210F391A0035C8F2 /* Springbok.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20B2E069210F3AEF0035C8F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E068210F3AEF0035C8F2 /* Result.swift */; };
@@ -38,7 +39,8 @@
 
 /* Begin PBXFileReference section */
 		2046C1572112EB3300D5E265 /* UIImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
-		2046C1592112EFDC00D5E265 /* SessionManager+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionManager+DownloadImage.swift"; sourceTree = "<group>"; };
+		2046C160211324CB00D5E265 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		2046C1622113266300D5E265 /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
 		20B2E03E210F391A0035C8F2 /* Springbok.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Springbok.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B2E041210F391A0035C8F2 /* Springbok.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Springbok.h; sourceTree = "<group>"; };
 		20B2E042210F391A0035C8F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				20B2E075210F400D0035C8F2 /* URLConvertible.swift */,
 				20B2E077210F408C0035C8F2 /* SBError.swift */,
 				20B2E07B210F41A90035C8F2 /* SessionManager.swift */,
+				2046C160211324CB00D5E265 /* ImageManager.swift */,
 				20B2E07D210F43700035C8F2 /* Request.swift */,
 			);
 			path = Core;
@@ -145,6 +148,7 @@
 				20B2E072210F3E930035C8F2 /* HTTPMethodTests.swift */,
 				20B2E079210F40DA0035C8F2 /* URLConvertibleTests.swift */,
 				20B2E07F210F45800035C8F2 /* SpringbokTests.swift */,
+				2046C1622113266300D5E265 /* ImageManagerTests.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -154,7 +158,6 @@
 			children = (
 				20B2E086210F544E0035C8F2 /* Request+Response.swift */,
 				2046C1572112EB3300D5E265 /* UIImageView+Download.swift */,
-				2046C1592112EFDC00D5E265 /* SessionManager+DownloadImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,7 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2046C15A2112EFDC00D5E265 /* SessionManager+DownloadImage.swift in Sources */,
 				20B2E069210F3AEF0035C8F2 /* Result.swift in Sources */,
 				20B2E06C210F3BCC0035C8F2 /* Springbok.swift in Sources */,
 				20B2E07C210F41A90035C8F2 /* SessionManager.swift in Sources */,
@@ -308,6 +310,7 @@
 				20B2E087210F544E0035C8F2 /* Request+Response.swift in Sources */,
 				20B2E07E210F43710035C8F2 /* Request.swift in Sources */,
 				20B2E070210F3E2F0035C8F2 /* HTTPMethod.swift in Sources */,
+				2046C161211324CB00D5E265 /* ImageManager.swift in Sources */,
 				20B2E076210F400D0035C8F2 /* URLConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +322,7 @@
 				20B2E08A210F58850035C8F2 /* User.swift in Sources */,
 				20B2E073210F3E930035C8F2 /* HTTPMethodTests.swift in Sources */,
 				20B2E07A210F40DA0035C8F2 /* URLConvertibleTests.swift in Sources */,
+				2046C1632113266300D5E265 /* ImageManagerTests.swift in Sources */,
 				20B2E080210F45800035C8F2 /* SpringbokTests.swift in Sources */,
 				20E4DDFB2110805D00A748B8 /* Playlist.swift in Sources */,
 			);

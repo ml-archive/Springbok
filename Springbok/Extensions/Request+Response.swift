@@ -37,13 +37,11 @@ extension Request {
     }
     
     private func decode<T: Codable>(_ data: Data, completion: @escaping ((Result<T>) -> Void)) {
-        
         if unwrapper == nil {
             decodeData(data, completion: completion)
         } else {
             unwrapAndDecode(data, completion: completion)
         }
-        
     }
     
     private func decodeData<T: Codable>(_ data: Data, completion: @escaping ((Result<T>) -> Void)) {
