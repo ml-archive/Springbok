@@ -64,7 +64,7 @@ extension UIImageView {
     }
     
     private func setImageIntoCache(url: String, image: UIImage) {
-//        ImageManager.shared.setImageToCache(image: image, url: url)
+        ImageManager.shared.setImageToCache(image: image, url: url)
     }
     
     private func animate(image: UIImage?, duration: TimeInterval) {
