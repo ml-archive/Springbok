@@ -19,8 +19,3 @@ public func request(_ url: URLConvertible,
 public func cancelRequest(url: String) {
     SessionManager.shared.cancelRequest(url: url)
 }
-
-public func cancelRequests() {
-    SessionManager.shared.cancelRequests()
-    ImageManager.shared.cancelTasks()
-}
