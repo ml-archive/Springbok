@@ -151,6 +151,36 @@
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="861.3193403298352"/>
         </scene>
+        <!--Huge image-->
+        <scene sceneID="nBp-g1-uOW">
+            <objects>
+                <viewController id="kv0-aZ-cvf" customClass="HugeImageController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TPw-Cb-NOY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RYB-Fq-grA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RYB-Fq-grA" firstAttribute="leading" secondItem="LxM-gr-myb" secondAttribute="leading" id="ETc-ja-cCq"/>
+                            <constraint firstItem="RYB-Fq-grA" firstAttribute="top" secondItem="LxM-gr-myb" secondAttribute="top" id="OZU-t8-HNe"/>
+                            <constraint firstItem="LxM-gr-myb" firstAttribute="bottom" secondItem="RYB-Fq-grA" secondAttribute="bottom" id="l2j-Xj-LQh"/>
+                            <constraint firstItem="LxM-gr-myb" firstAttribute="trailing" secondItem="RYB-Fq-grA" secondAttribute="trailing" id="q1e-Fu-3Xp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LxM-gr-myb"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Huge image" id="1Mf-Ov-AGt"/>
+                    <connections>
+                        <outlet property="hugeImageImageView" destination="RYB-Fq-grA" id="kQT-Iw-dvS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jKs-RJ-FKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="1565"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ihk-9s-xTJ">
             <objects>
@@ -164,6 +194,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="D9S-bF-ewb"/>
                         <segue destination="1RU-r3-XEc" kind="relationship" relationship="viewControllers" id="WPZ-n3-QKV"/>
+                        <segue destination="kv0-aZ-cvf" kind="relationship" relationship="viewControllers" id="2Lk-Ry-i1m"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Oo-bv-dwK" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@
 		2046C165211328C900D5E265 /* RequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C164211328C900D5E265 /* RequestsController.swift */; };
 		2046C16D211329C000D5E265 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C16C211329C000D5E265 /* RequestCell.swift */; };
 		2046C16F21132B4C00D5E265 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C16E21132B4C00D5E265 /* Comment.swift */; };
+		2092DE8121146CB700364564 /* HugeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092DE8021146CB700364564 /* HugeImageController.swift */; };
 		20B2E023210F38AC0035C8F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E022210F38AC0035C8F2 /* AppDelegate.swift */; };
 		20B2E025210F38AC0035C8F2 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E024210F38AC0035C8F2 /* ImagesViewController.swift */; };
 		20B2E028210F38AC0035C8F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B2E026210F38AC0035C8F2 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		2046C164211328C900D5E265 /* RequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsController.swift; sourceTree = "<group>"; };
 		2046C16C211329C000D5E265 /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		2046C16E21132B4C00D5E265 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		2092DE8021146CB700364564 /* HugeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HugeImageController.swift; sourceTree = "<group>"; };
 		20B2E01F210F38AB0035C8F2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B2E022210F38AC0035C8F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B2E024210F38AC0035C8F2 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				2046C168211328ED00D5E265 /* Images */,
 				2046C169211328F200D5E265 /* Requests */,
+				2092DE7E21146C9E00364564 /* Huge Image */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -122,6 +125,14 @@
 				2046C16E21132B4C00D5E265 /* Comment.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		2092DE7E21146C9E00364564 /* Huge Image */ = {
+			isa = PBXGroup;
+			children = (
+				2092DE8021146CB700364564 /* HugeImageController.swift */,
+			);
+			path = "Huge Image";
 			sourceTree = "<group>";
 		};
 		20B2E016210F38AB0035C8F2 = {
@@ -281,6 +292,7 @@
 				20B2E025210F38AC0035C8F2 /* ImagesViewController.swift in Sources */,
 				2046C16F21132B4C00D5E265 /* Comment.swift in Sources */,
 				2046C15C2112F89600D5E265 /* ImageViewCell.swift in Sources */,
+				2092DE8121146CB700364564 /* HugeImageController.swift in Sources */,
 				2046C16D211329C000D5E265 /* RequestCell.swift in Sources */,
 				20B2E023210F38AC0035C8F2 /* AppDelegate.swift in Sources */,
 				2046C165211328C900D5E265 /* RequestsController.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageIO
 
 extension UIImageView {
     
@@ -46,13 +47,15 @@ extension UIImageView {
     }
     
     private func setImage(image: UIImage?, url: String, fading: Bool, duration: TimeInterval = 0.3) {
-        if accessibilityIdentifier == url, let image = image {
+        if accessibilityIdentifier == url, let image = resizeImageToFit(image: image) {
             if fading {
                 animate(image: image, duration: duration)
             } else {
                 self.image = image
             }
             setImageIntoCache(url: url, image: image)
+        } else {
+            self.image = nil
         }
     }
     
@@ -61,7 +64,7 @@ extension UIImageView {
     }
     
     private func setImageIntoCache(url: String, image: UIImage) {
-        ImageManager.shared.setImageToCache(image: image, url: url)
+//        ImageManager.shared.setImageToCache(image: image, url: url)
     }
     
     private func animate(image: UIImage?, duration: TimeInterval) {
@@ -71,6 +74,39 @@ extension UIImageView {
             self.alpha = 1
             self.superview?.layoutIfNeeded()
         }
+    }
+    
+    public func resizeImageToFit(image: UIImage?) -> UIImage? {
+        guard
+            let image = image,
+            let cgImage = image.cgImage,
+            let colorSpace = cgImage.colorSpace
+        else {
+            return nil
+        }
+        
+        let width = cgImage.width * Int(contentScaleFactor)
+        let height = cgImage.height * Int(contentScaleFactor)
+        let bitsPerComponent = cgImage.bitsPerComponent
+        let bytesPerRow = cgImage.bytesPerRow
+        let bitmapInfo = cgImage.bitmapInfo
+
+        guard let context = CGContext(
+            data: nil,
+            width: width,
+            height: height,
+            bitsPerComponent: bitsPerComponent,
+            bytesPerRow: bytesPerRow,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo.rawValue)
+        else {
+            return nil
+        }
+
+        context.interpolationQuality = .default
+        context.draw(cgImage, in: CGRect(origin: .zero, size: CGSize(width: CGFloat(width), height: CGFloat(height))))
+
+        return context.makeImage().flatMap { UIImage(cgImage: $0) }
     }
     
 }
