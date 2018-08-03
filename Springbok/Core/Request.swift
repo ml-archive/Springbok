@@ -17,6 +17,7 @@ public class Request {
     private(set) var body: Data?
     private(set) var request: URLRequest?
     private(set) var unwrapper: String?
+    public var task: URLSessionDataTask?
     
     // MARK: - Lifecycle -
     init(url: URL, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?) {
@@ -27,6 +28,7 @@ public class Request {
         error = nil
         body = nil
         request = nil
+        task = nil
         
         if parameters != nil {
             encodeRequestParameters()
@@ -43,6 +45,7 @@ public class Request {
         headers = nil
         body = nil
         request = nil
+        task = nil
     }
     
     // MARK: - Methods -
@@ -112,5 +115,9 @@ public class Request {
         self.unwrapper = unwrapper
         
         return self
+    }
+    
+    public func cancel() {
+        task?.cancel()
     }
 }

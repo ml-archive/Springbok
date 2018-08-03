@@ -15,7 +15,9 @@ extension Request {
             return
         }
         
-        let task = SessionManager.default.session.dataTask(with: request) { (data, _, error) in
+        task = SessionManager.shared.session.dataTask(with: request) { (data, _, error) in
+            SessionManager.shared.requestFinish(self)
+            
             if let error = error {
                 DispatchQueue.main.async { completion(.failure(error)) }
                 
@@ -32,18 +34,16 @@ extension Request {
         }
         
         DispatchQueue.global(qos: .background).async {
-            task.resume()
+            self.task?.resume()
         }
     }
     
     private func decode<T: Codable>(_ data: Data, completion: @escaping ((Result<T>) -> Void)) {
-        
         if unwrapper == nil {
             decodeData(data, completion: completion)
         } else {
             unwrapAndDecode(data, completion: completion)
         }
-        
     }
     
     private func decodeData<T: Codable>(_ data: Data, completion: @escaping ((Result<T>) -> Void)) {

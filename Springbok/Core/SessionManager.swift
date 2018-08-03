@@ -5,26 +5,23 @@
 //  Created by Maxime Maheo on 30/07/2018.
 //  Copyright © 2018 Nodes. All rights reserved.
 //
-import UIKit
 
 class SessionManager {
     
     // MARK: - Properties -
-    public static let `default`: SessionManager = {
+    public static let shared: SessionManager = {
         let configuration = URLSessionConfiguration.default
         
         return SessionManager(configuration: configuration)
     }()
     
     public let session: URLSession
-    public var downloadImageTasks: [String: URLSessionDataTask]
-    public var imageCache: NSCache<NSString, UIImage>
+    public var requests: [String: Request]
     
     // MARK: - Lifecycle -
     init(configuration: URLSessionConfiguration = URLSessionConfiguration.default) {
         session = URLSession(configuration: configuration)
-        downloadImageTasks = [:]
-        imageCache = NSCache()
+        requests = [:]
     }
     
     // MARK: - Methods -
@@ -33,7 +30,10 @@ class SessionManager {
                         parameters: Parameters?,
                         headers: HTTPHeaders?) -> Request {
         do {
-            return try Request(url: url.asURL(), method: method, parameters: parameters, headers: headers)
+            let request = try Request(url: url.asURL(), method: method, parameters: parameters, headers: headers)
+            requests[url.asString()] = request
+            
+            return request
         } catch {
             return Request(error: error)
         }

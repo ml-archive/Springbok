@@ -9,7 +9,7 @@
 import UIKit
 import Springbok
 
-class ViewController: UIViewController {
+class ImagesViewController: UIViewController {
     
     // MARK: - Outlets -
     @IBOutlet weak var tableView: UITableView! {
@@ -24,9 +24,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    
+        Springbok.cancelRequests()
+    }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ImagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
     }
@@ -40,5 +45,4 @@ extension ViewController: UITableViewDataSource {
         
         return cell
     }
-
 }

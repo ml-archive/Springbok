@@ -13,5 +13,14 @@ public func request(_ url: URLConvertible,
                     method: HTTPMethod = .get,
                     parameters: Parameters? = nil,
                     headers: HTTPHeaders? = nil) -> Request {
-    return SessionManager.default.request(url, method: method, parameters: parameters, headers: headers)
+    return SessionManager.shared.request(url, method: method, parameters: parameters, headers: headers)
+}
+
+public func cancelRequest(url: String) {
+    SessionManager.shared.cancelRequest(url: url)
+}
+
+public func cancelRequests() {
+    SessionManager.shared.cancelRequests()
+    ImageManager.shared.cancelTasks()
 }

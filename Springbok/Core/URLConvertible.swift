@@ -5,6 +5,7 @@
 //  Created by Maxime Maheo on 30/07/2018.
 //  Copyright © 2018 Nodes. All rights reserved.
 //
+
 public protocol URLConvertible {
     func asURL() throws -> URL
 }
@@ -14,5 +15,11 @@ extension String: URLConvertible {
         guard let url = URL(string: self) else { throw SBError.invalidURL(url: self) }
         
         return url
+    }
+}
+
+extension URLConvertible {
+    public func asString() -> String {
+        return "\(self)"
     }
 }
