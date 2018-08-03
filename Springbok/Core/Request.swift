@@ -120,4 +120,8 @@ public class Request {
     func cancel() {
         task?.cancel()
     }
+    
+    public func getUrl() -> URL? {
+        return request?.url
+    }
 }
