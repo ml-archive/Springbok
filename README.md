@@ -144,6 +144,17 @@ import Springbok
 imageView.cancelDownloadTask()
 ```
 
+### Cancel requets
+
+You can cancel request with the given url :
+
+```swift
+import Springbok
+
+Springbok.cancelRequest(url: "<your_url>")
+
+```
+
 ## 💻 Developers
 
 - [Maxime Maheo](https://github.com/mmaheo)

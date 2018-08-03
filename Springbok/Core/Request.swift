@@ -9,15 +9,15 @@
 public class Request {
 
     // MARK: - Properties -
-    public let error: Error?
+    let error: Error?
     private(set) var url: URL?
-    public let method: HTTPMethod?
-    public let parameters: Parameters?
-    public let headers: HTTPHeaders?
+    let method: HTTPMethod?
+    let parameters: Parameters?
+    let headers: HTTPHeaders?
     private(set) var body: Data?
     private(set) var request: URLRequest?
     private(set) var unwrapper: String?
-    public var task: URLSessionDataTask?
+    var task: URLSessionDataTask?
     
     // MARK: - Lifecycle -
     init(url: URL, method: HTTPMethod, parameters: Parameters?, headers: HTTPHeaders?) {
@@ -117,7 +117,7 @@ public class Request {
         return self
     }
     
-    public func cancel() {
+    func cancel() {
         task?.cancel()
     }
 }
