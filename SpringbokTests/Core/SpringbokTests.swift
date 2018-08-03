@@ -23,6 +23,7 @@ class SpringbokTests: XCTestCase {
         XCTAssertNil(request.headers)
         XCTAssertEqual(request.request?.allHTTPHeaderFields?.count, 0)
         XCTAssertNil(request.unwrapper)
+        XCTAssertNil(request.task)
     }
     
     func testRequestWithWrongURL() {
@@ -35,6 +36,7 @@ class SpringbokTests: XCTestCase {
         XCTAssertNil(request.headers)
         XCTAssertNil(request.request)
         XCTAssertNil(request.unwrapper)
+        XCTAssertNil(request.task)
     }
     
     func testRequestWithAnotherHTTPMethod() {

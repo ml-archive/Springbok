@@ -24,6 +24,11 @@ class ImagesViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    
+        Springbok.cancelRequests()
+    }
 }
 
 extension ImagesViewController: UITableViewDataSource {
@@ -40,5 +45,4 @@ extension ImagesViewController: UITableViewDataSource {
         
         return cell
     }
-
 }

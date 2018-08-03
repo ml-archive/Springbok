@@ -10,6 +10,7 @@
 		2046C1582112EB3300D5E265 /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C1572112EB3300D5E265 /* UIImageView+Download.swift */; };
 		2046C161211324CB00D5E265 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C160211324CB00D5E265 /* ImageManager.swift */; };
 		2046C1632113266300D5E265 /* ImageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046C1622113266300D5E265 /* ImageManagerTests.swift */; };
+		2092DE7621143CBF00364564 /* SessionManager+Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092DE7521143CBF00364564 /* SessionManager+Cancel.swift */; };
 		20B2E048210F391A0035C8F2 /* Springbok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B2E03E210F391A0035C8F2 /* Springbok.framework */; };
 		20B2E04F210F391A0035C8F2 /* Springbok.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B2E041210F391A0035C8F2 /* Springbok.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20B2E069210F3AEF0035C8F2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B2E068210F3AEF0035C8F2 /* Result.swift */; };
@@ -41,6 +42,7 @@
 		2046C1572112EB3300D5E265 /* UIImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
 		2046C160211324CB00D5E265 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		2046C1622113266300D5E265 /* ImageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerTests.swift; sourceTree = "<group>"; };
+		2092DE7521143CBF00364564 /* SessionManager+Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionManager+Cancel.swift"; sourceTree = "<group>"; };
 		20B2E03E210F391A0035C8F2 /* Springbok.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Springbok.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B2E041210F391A0035C8F2 /* Springbok.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Springbok.h; sourceTree = "<group>"; };
 		20B2E042210F391A0035C8F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				20B2E086210F544E0035C8F2 /* Request+Response.swift */,
 				2046C1572112EB3300D5E265 /* UIImageView+Download.swift */,
+				2092DE7521143CBF00364564 /* SessionManager+Cancel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				20B2E07C210F41A90035C8F2 /* SessionManager.swift in Sources */,
 				2046C1582112EB3300D5E265 /* UIImageView+Download.swift in Sources */,
 				20B2E078210F408C0035C8F2 /* SBError.swift in Sources */,
+				2092DE7621143CBF00364564 /* SessionManager+Cancel.swift in Sources */,
 				20B2E087210F544E0035C8F2 /* Request+Response.swift in Sources */,
 				20B2E07E210F43710035C8F2 /* Request.swift in Sources */,
 				20B2E070210F3E2F0035C8F2 /* HTTPMethod.swift in Sources */,

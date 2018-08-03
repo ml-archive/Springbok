@@ -5,6 +5,7 @@
 //  Created by Maxime Maheo on 02/08/2018.
 //  Copyright © 2018 Nodes. All rights reserved.
 //
+
 import UIKit
 
 final class ImageViewCell: UITableViewCell {

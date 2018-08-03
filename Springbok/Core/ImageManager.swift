@@ -25,10 +25,11 @@ class ImageManager {
     // MARK: - Methods -
     public func downloadImage(from url: URL, completion: @escaping (_ image: UIImage?) -> Void) {
         downloadTasks[url.absoluteString] = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            self.downloadTasks.removeValue(forKey: url.absoluteString)
+            
             if error == nil, let data = data, let image = UIImage(data: data) {
                 DispatchQueue.main.async {
                     completion(image)
-                    self.downloadTasks.removeValue(forKey: url.absoluteString)
                 }
                 
                 return
@@ -36,7 +37,6 @@ class ImageManager {
             
             DispatchQueue.main.async {
                 completion(nil)
-                self.downloadTasks.removeValue(forKey: url.absoluteString)
             }
         }
         
@@ -47,6 +47,14 @@ class ImageManager {
     
     public func cancelTask(url: String) {
         downloadTasks[url]?.cancel()
+        downloadTasks.removeValue(forKey: url)
+    }
+    
+    public func cancelTasks() {
+        for task in downloadTasks {
+            task.value.cancel()
+        }
+        downloadTasks.removeAll()
     }
     
     public func setImageToCache(image: UIImage, url: String) {
