@@ -16,6 +16,6 @@ public func request(_ url: URLConvertible,
     return SessionManager.shared.request(url, method: method, parameters: parameters, headers: headers)
 }
 
-public func cancelRequest(url: String) {
-    SessionManager.shared.cancelRequest(url: url)
+public func cancelRequest(request: Request) {
+    SessionManager.shared.cancelRequest(request: request)
 }

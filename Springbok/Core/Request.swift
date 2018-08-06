@@ -117,7 +117,7 @@ public class Request {
         return self
     }
     
-    func cancel() {
+    public func cancel() {
         task?.cancel()
     }
     
