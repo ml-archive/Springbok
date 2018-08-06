@@ -15,9 +15,11 @@ extension SessionManager {
         requests.removeAll()
     }
     
-    public func cancelRequest(url: String) {
-        requests[url]?.cancel()
-        requests.removeValue(forKey: url)
+    public func cancelRequest(request: Request) {
+        if let url = request.getUrl()?.absoluteString {
+            request.cancel()
+            requests.removeValue(forKey: url)
+        }
     }
     
     func requestFinish(_ request: Request) {
