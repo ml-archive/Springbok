@@ -99,10 +99,17 @@ public class Request {
         
         if JSONSerialization.isValidJSONObject(parameters) {
             do {
-                return try JSONSerialization.data(
-                    withJSONObject: parameters,
-                    options: [.sortedKeys]
-                )
+                if #available(iOS 11.0, *) {
+                    return try JSONSerialization.data(
+                        withJSONObject: parameters,
+                        options: [.sortedKeys]
+                    )
+                } else {
+                    return try JSONSerialization.data(
+                        withJSONObject: parameters,
+                        options: []
+                    )
+                }
             } catch {
                 return nil
             }
