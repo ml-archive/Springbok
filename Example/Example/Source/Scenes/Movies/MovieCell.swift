@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Springbok
+import Kingfisher
 
 protocol MovieCellProtocol {
     func display(pictureURL: String)
@@ -26,6 +26,8 @@ final class MovieCell: UICollectionViewCell {
 
 extension MovieCell: MovieCellProtocol {
     func display(pictureURL: String) {
-        pictureImageView.setImage(url: pictureURL)
+        if let url = URL(string: pictureURL) {
+            pictureImageView.kf.setImage(with: url, options: [.processor(ReduceImageSizeProcessor())])
+        }
     }
 }

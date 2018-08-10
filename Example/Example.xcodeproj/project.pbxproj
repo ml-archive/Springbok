@@ -28,6 +28,8 @@
 		20B2E061210F39B60035C8F2 /* Springbok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B2E05E210F39980035C8F2 /* Springbok.framework */; };
 		20B2E062210F39B60035C8F2 /* Springbok.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20B2E05E210F39980035C8F2 /* Springbok.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20C776EE211D88AF00865DD4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C776ED211D88AF00865DD4 /* UIViewController+Alert.swift */; };
+		20C776F3211D8CA100865DD4 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C776F2211D8CA100865DD4 /* Kingfisher.framework */; };
+		20C776F5211D8EE700865DD4 /* ReduceImageSizeProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C776F4211D8EE700865DD4 /* ReduceImageSizeProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		20B2E02E210F38B00035C8F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20B2E058210F39970035C8F2 /* Springbok.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Springbok.xcodeproj; path = ../Springbok.xcodeproj; sourceTree = "<group>"; };
 		20C776ED211D88AF00865DD4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		20C776F2211D8CA100865DD4 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		20C776F4211D8EE700865DD4 /* ReduceImageSizeProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduceImageSizeProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C776F3211D8CA100865DD4 /* Kingfisher.framework in Frameworks */,
 				20B2E061210F39B60035C8F2 /* Springbok.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				208DBA2E211D7CC000E098E5 /* Coordinator.swift */,
+				20C776F4211D8EE700865DD4 /* ReduceImageSizeProcessor.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 				20B2E021210F38AB0035C8F2 /* Example */,
 				20B2E020210F38AB0035C8F2 /* Products */,
 				20B2E058210F39970035C8F2 /* Springbok.xcodeproj */,
+				20C776F1211D8CA100865DD4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +245,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		20C776F1211D8CA100865DD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20C776F2211D8CA100865DD4 /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,7 +264,7 @@
 				20B2E01C210F38AB0035C8F2 /* Frameworks */,
 				20B2E01D210F38AB0035C8F2 /* Resources */,
 				20B2E065210F39B60035C8F2 /* Embed Frameworks */,
-				20B2E06E210F3D0F0035C8F2 /* SwiftLint */,
+				20C776F0211D8C7500865DD4 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -331,7 +346,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20B2E06E210F3D0F0035C8F2 /* SwiftLint */ = {
+		20C776F0211D8C7500865DD4 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -339,15 +354,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
-			name = SwiftLint;
+			name = Carthage;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -361,6 +377,7 @@
 				208DBA42211D7D9A00E098E5 /* UIWindow+RootViewController.swift in Sources */,
 				208DBA4B211D835100E098E5 /* RemoteRepository.swift in Sources */,
 				208DBA2C211D7CB000E098E5 /* AppCoordinator.swift in Sources */,
+				20C776F5211D8EE700865DD4 /* ReduceImageSizeProcessor.swift in Sources */,
 				208DBA39211D7CE500E098E5 /* MoviesCoordinator.swift in Sources */,
 				208DBA3C211D7CE500E098E5 /* MoviesModels.swift in Sources */,
 				20C776EE211D88AF00865DD4 /* UIViewController+Alert.swift in Sources */,
@@ -519,6 +536,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ERLK54RKG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -538,6 +559,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ERLK54RKG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
