@@ -6,7 +6,7 @@
 //  Copyright © 2018 Nodes. All rights reserved.
 //
 
-import Springbok
+import Alamofire
 
 protocol HasRepository {
     

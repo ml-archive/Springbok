@@ -6,7 +6,7 @@
 //  Copyright © 2018 Nodes. All rights reserved.
 //
 
-import Springbok
+import Alamofire
 
 final class RemoteRepository {
     
@@ -29,10 +29,28 @@ extension RemoteRepository: Repository {
         var parameters = defaultParameters
         parameters["page"] = "\(page)"
         
-        Springbok
+        Alamofire
             .request("\(baseURL)/discover/movie", parameters: parameters)
-            .unwrap("results")
-            .responseCodable(completion: completion)
+            .validate()
+            .responseJSON { (response) in
+                if response.error != nil {
+                    if (response.error! as NSError).code == NSURLErrorCancelled { return }
+                    return completion(.failure(response.error!))
+                }
+                
+                guard
+                    let json = response.result.value as? [String: Any],
+                    let results = json["results"] as? [[String: Any]]
+                    else {
+                        return completion(.failure(AFError.responseSerializationFailed(reason: AFError.ResponseSerializationFailureReason.inputDataNilOrZeroLength)))
+                }
+                
+                let movies = results.compactMap { dict in
+                    return Movie(dict: dict)
+                }
+                
+                return completion(.success(movies))
+        }
     }
     
 }
