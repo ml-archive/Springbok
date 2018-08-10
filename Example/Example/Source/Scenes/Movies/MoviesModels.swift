@@ -15,13 +15,15 @@ enum Movies {
 }
 
 extension Movies.Request {
-
+    struct FetchMovies { let page: Int }
 }
 
 extension Movies.Response {
-
+    struct MoviesFetched { let movies: [Movie] }
+    struct Error { let errorMessage: String }
 }
 
 extension Movies.DisplayData {
-    
+    struct Movies { }
+    struct Error { let errorMessage: String }
 }

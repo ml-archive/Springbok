@@ -22,6 +22,7 @@ class MoviesCoordinator: Coordinator {
         self.window = window
         
         navigationController = UINavigationController()
+        
         children = []
     }
 

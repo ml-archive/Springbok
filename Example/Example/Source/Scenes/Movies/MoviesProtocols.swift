@@ -24,22 +24,33 @@ protocol MoviesCoordinatorInput: class {
 
 // PRESENTER -> INTERACTOR
 protocol MoviesInteractorInput {
-    // func perform(_ request: Movies.Request.Work)
+    func perform(_ request: Movies.Request.FetchMovies)
 }
 
 // INTERACTOR -> PRESENTER (indirect)
 protocol MoviesInteractorOutput: class {
-    // func present(_ response: Movies.Response.Work)
+    func present(_ response: Movies.Response.MoviesFetched)
+    
+    func present(_ response: Movies.Response.Error)
 }
 
 // ======== Presenter ======== //
 
 // VIEW -> PRESENTER
 protocol MoviesPresenterInput {
+    
+    // MARK: - Properties -
+    var numberOfItems: Int { get }
+    
+    // MARK: - Methods -
     func viewCreated()
+    func configure(item: MovieCellProtocol, at indexPath: IndexPath)
+    func displayNext()
 }
 
 // PRESENTER -> VIEW
 protocol MoviesPresenterOutput: class {
-    // func display(_ displayModel: Movies.DisplayData.Work)
+    func display(_ displayModel: Movies.DisplayData.Movies)
+    
+    func display(_ displayModel: Movies.DisplayData.Error)
 }
