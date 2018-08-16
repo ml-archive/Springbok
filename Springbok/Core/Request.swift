@@ -91,7 +91,7 @@ public class Request {
         }
         if queryString.last != nil { queryString.removeLast() }
         
-        return queryString.replacingOccurrences(of: " ", with: "%20%")
+        return queryString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) ?? ""
     }
     
     private func generateBody() -> Data? {
