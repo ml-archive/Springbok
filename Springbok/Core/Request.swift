@@ -91,7 +91,7 @@ public class Request {
         }
         if queryString.last != nil { queryString.removeLast() }
         
-        return queryString
+        return queryString.replacingOccurrences(of: " ", with: "%20%")
     }
     
     private func generateBody() -> Data? {
