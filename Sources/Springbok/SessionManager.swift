@@ -1,0 +1,1 @@
+../../Springbok/Core/SessionManager.swift
